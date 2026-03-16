@@ -1,6 +1,0 @@
-
-Fichier	Description
-meilleur_modele.h5	Le meilleur modèle de la Phase 1 (val_accuracy = 0.575)
-mobilenetv3_sdnet_final.h5	Le modèle final (après Phase 2)
-courbes_entrainement.png	Les graphiques d'accuracy et loss
-sdnet_prepared.npz	Tes données préparées
