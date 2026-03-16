@@ -1,0 +1,22 @@
+Catégorie,Métrique,Valeur PC,Valeur Téléphone,Source
+ENVIRONNEMENT,Processeur,Intel(R) Core(TM) i5-5300U CPU @ 2.30GHz,Helio G96 Octa-core Max 2.05Ghz,Spécifications
+,Cœurs,4 logiques,4+,Spécifications
+,RAM,7.88 GB,6GB,Spécifications
+,OS,Windows 10,Android 13,Spécifications
+RESSOURCES,Taille modèle,15.84 Mo,2.9 Mo (TFLite),Fichier
+,Mémoire utilisée,19.38 MB,~10-15 MB (estimé),Mesure/Estimation
+PERFORMANCES,Latence moyenne,138.53 ms,11.2 ms,Script PC / adb logcat
+,Latence min,131.06 ms,-,Script PC
+,Latence max,156.12 ms,-,Script PC
+,Écart-type,4.85 ms,-,Script PC
+CLASSIFICATION,Accuracy,0.5000,Non mesuré,Script PC
+,Précision,0.5000,Non mesuré,Script PC
+,Rappel,1.0000,Non mesuré,Script PC
+,F1-Score,0.6667,Non mesuré,Script PC 
+,Spécificité,0.0000,Non mesuré,Script PC
+,ROC-AUC,0.3847,Non mesuré,Script PC
+,MCC,0.0000,Non mesuré,Script PC
+MATRICE,VN,0,-,Script PC
+,FP,249,-,Script PC
+,FN,0,-,Script PC
+,VP,249,-,Script PC

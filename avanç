@@ -1,0 +1,17 @@
+✅ CE QUE TU AS ACCOMPLI POUR LA PARTIE 1 (Détection de fissures) (25-02-2026)
+Tâche	Statut	Résultat
+Dataset SDNET2018 préparé	✅ OK	3000 images équilibrées
+MobileNetV3-Small testé	✅ OK	Modèle fonctionnel
+Fine-tuning effectué	✅ OK	meilleur_modele.h5
+Évaluation sur PC	✅ OK	Rappel 100%, F1=0.6667
+Conversion TFLite	✅ OK	mobilenetv3_fissures.tflite (1.92 Mo)
+Test sur téléphone	✅ OK	Latence 8.27 ms !
+Profilage des opérations	✅ OK	Convolutions principales
+🏆 RÉSULTATS FINAUX DE LA PARTIE 1
+Métrique	Valeur
+Latence sur téléphone	8.27 ms (120 images/sec)
+Mémoire utilisée	20.1 MB
+Taille du modèle	1.92 Mo
+Rappel (fissures détectées)	100%
+Précision	50%
+F1-Score	0.6667

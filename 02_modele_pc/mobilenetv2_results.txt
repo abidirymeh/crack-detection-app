@@ -1,0 +1,43 @@
+02-13 17:02:02.681 15699 15699 I tflite_BenchmarkModelActivity: Running TensorFlow Lite benchmark with args: --graph=/data/local/tmp/MobileNetV2.tflite --num_threads=4 --enable_op_profiling=true
+02-13 17:02:02.687 15699 15699 I tflite  : Log parameter values verbosely: [0]
+02-13 17:02:02.687 15699 15699 I tflite  : Num threads: [4]
+02-13 17:02:02.687 15699 15699 I tflite  : Graph: [/data/local/tmp/MobileNetV2.tflite]
+02-13 17:02:02.687 15699 15699 I tflite  : Signature to run: []
+02-13 17:02:02.687 15699 15699 I tflite  : Enable op profiling: [1]
+02-13 17:02:02.687 15699 15699 I tflite  : #threads used for CPU inference: [4]
+02-13 17:02:02.688 15699 15699 I tflite  : Loaded model /data/local/tmp/MobileNetV2.tflite
+02-13 17:02:02.688 15699 15699 I tflite  : Initialized TensorFlow Lite runtime.
+02-13 17:02:02.691 15699 15699 I tflite  : Created TensorFlow Lite XNNPACK delegate for CPU.
+02-13 17:02:02.692 15699 15699 I tflite  : Replacing 54 out of 69 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 31 partitions for subgraph 0.
+02-13 17:02:02.705 15699 15699 I tflite  : The input model file size (MB): 2.50798
+02-13 17:02:02.705 15699 15699 I tflite  : Initialized session in 17.722ms.
+02-13 17:02:02.707 15699 15699 I tflite  : Running benchmark for at least 1 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
+02-13 17:02:03.234 15699 15699 I tflite  : count=14 first=45702 curr=36765 min=23848 max=45702 avg=37508.5 std=5359 p5=23848 median=37520 p95=45702
+02-13 17:02:03.234 15699 15699 I tflite  : Running benchmark for at least 50 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
+02-13 17:02:05.110 15699 15699 I tflite  : count=50 first=38829 curr=39774 min=24701 max=46364 avg=37299.2 std=4651 p5=27237 median=38104 p95=42745
+02-13 17:02:05.110 15699 15699 I tflite  : Inference timings in us: Init: 17722, First inference: 45702, Warmup (avg): 37508.5, Inference (avg): 37299.2
+02-13 17:02:05.110 15699 15699 I tflite  : Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
+02-13 17:02:05.110 15699 15699 I tflite  : Memory footprint delta from the start of the tool (MB): init=16.3008 overall=27.3555
+02-13 17:02:05.111 15699 15699 I tflite  : Profiling Info for Benchmark Initialization:
+02-13 17:02:05.111 15699 15699 I tflite  : ============================== Run Order ==============================
+02-13 17:02:05.111 15699 15699 I tflite  : 	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+02-13 17:02:05.111 15699 15699 I tflite  : 	                 ModifyGraphWithDelegate	    7.841	    7.841	 58.137%	 58.137%	  4156.000	        1	ModifyGraphWithDelegate/0
+02-13 17:02:05.111 15699 15699 I tflite  : 	                         AllocateTensors	    5.646	    5.646	 41.863%	100.000%	  8176.000	        1	AllocateTensors/0
+02-13 17:02:05.111 15699 15699 I tflite  : 
+02-13 17:02:05.111 15699 15699 I tflite  : ============================== Top by Computation Time ==============================
+02-13 17:02:05.111 15699 15699 I tflite  : 	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+02-13 17:02:05.111 15699 15699 I tflite  : 	                 ModifyGraphWithDelegate	    7.841	    7.841	 58.137%	 58.137%	  4156.000	        1	ModifyGraphWithDelegate/0
+02-13 17:02:05.111 15699 15699 I tflite  : 	                         AllocateTensors	    5.646	    5.646	 41.863%	100.000%	  8176.000	        1	AllocateTensors/0
+02-13 17:02:05.111 15699 15699 I tflite  : 
+02-13 17:02:05.111 15699 15699 I tflite  : Number of nodes executed: 2
+02-13 17:02:05.111 15699 15699 I tflite  : ============================== Summary by node type ====================
+02-13 17:02:05.111 15699 15699 I tflite  : Operator-wise Profiling Info for Regular Benchmark Runs:
+02-13 17:02:05.111 15699 15699 I tflite  : ============================== Run Order ==============================
+02-13 17:02:05.111 15699 15699 I tflite  : 	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+02-13 17:02:05.111 15699 15699 I tflite  : 	                  Unary Elementwise (NC)	    0.000	    0.001	  0.002%	  0.002%	     0.000	        1	Delegate/Unary Elementwise (NC):7
+02-13 17:02:05.111 15699 15699 I tflite  : 	Fully Connected (NC, QP8, F32, QC8W) GEMM	    0.002	    0.002	  0.006%	  0.009%	     0.000	        1	Delegate/Fully Connected (NC, QP8, F32, QC8W) GEMM:6
+02-13 17:02:05.111 15699 15699 I tflite  : 	                  Convert (NC, F32, QP8)	    0.005	    0.005	  0.013%	  0.022%	     0.000	        1	Delegate/Convert (NC, F32, QP8):5
+02-13 17:02:05.111 15699 15699 I tflite  : 	                          Mean (ND) Mean	    0.043	    0.061	  0.166%	  0.188%	     0.000	        1	Delegate/Mean (ND) Mean:4
+02-13 17:02:05.111 15699 15699 I tflite  : 	                       DEPTHWISE_CONV_2D	    1.730	    1.517	  4.101%	  4.289%	     0.000	        1	[model/mobilenetv2_1.00_224/block_16_depthwise_relu/
+                                                                                                                                                                Relu6;model/mobilenetv2_1.00_224/
+                                                                                                                                                                block_16_depthwise_BN/FusedBatchNormV3;mode

@@ -1,0 +1,10 @@
+# Fichiers … ignorer 
+venv/ 
+__pycache__/ 
+*.pyc 
+*.npz 
+*.h5 
+*.tflite 
+*.pkl 
+03_dataset/ 
+resultats_bruts.txt 

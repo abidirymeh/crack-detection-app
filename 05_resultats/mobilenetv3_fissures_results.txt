@@ -1,0 +1,44 @@
+02-25 10:56:49.227  9635  9635 D nativeloader: Extending system_exposed_libraries: libmisys_jni.xiaomi.so:libteeservice_client.trustonic.so:libapuwareapusys.mtk.so:libapuwareapusys_v2.mtk.so:libapuwarexrp.mtk.so:libapuwarexrp_v2.mtk.so:libapuwareutils.mtk.so:libapuwareutils_v2.mtk.so:libapuwarehmp.mtk.so:libmcv_runtime_usdk.mtk.so:libneuron_graph_delegate.mtk.so:libneuronusdk_adapter.mtk.so:libtflite_mtk.mtk.so:libarmnn_ndk.mtk.so:libcmdl_ndk.mtk.so:libnir_neon_driver_ndk.mtk.so:libmvpu_runtime.mtk.so:libmvpu_runtime_pub.mtk.so:libmvpu_engine_pub.mtk.so:libmvpu_pattern_pub.mtk.so:libmvpuop_mtk_cv.mtk.so:libmvpuop_mtk_nn.mtk.so
+02-25 10:57:08.942  9838  9838 I tflite_BenchmarkModelActivity: Running TensorFlow Lite benchmark with args: --graph=/data/local/tmp/mobilenetv3_fissures.tflite --num_threads=4 --enable_op_profiling=true
+02-25 10:57:08.971  9838  9838 I tflite  : Log parameter values verbosely: [0]
+02-25 10:57:08.971  9838  9838 I tflite  : Num threads: [4]
+02-25 10:57:08.971  9838  9838 I tflite  : Graph: [/data/local/tmp/mobilenetv3_fissures.tflite]
+02-25 10:57:08.971  9838  9838 I tflite  : Signature to run: []
+02-25 10:57:08.971  9838  9838 I tflite  : Enable op profiling: [1]
+02-25 10:57:08.971  9838  9838 I tflite  : #threads used for CPU inference: [4]
+02-25 10:57:08.988  9838  9838 I tflite  : Loaded model /data/local/tmp/mobilenetv3_fissures.tflite
+02-25 10:57:09.000  9838  9838 I tflite  : Initialized TensorFlow Lite runtime.
+02-25 10:57:09.009  9838  9838 I tflite  : Created TensorFlow Lite XNNPACK delegate for CPU.
+02-25 10:57:09.010  9838  9838 I tflite  : Replacing 220 out of 220 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+02-25 10:57:09.021  9838  9838 I tflite  : The input model file size (MB): 1.92086
+02-25 10:57:09.021  9838  9838 I tflite  : Initialized session in 45.692ms.
+02-25 10:57:09.024  9838  9838 I tflite  : Running benchmark for at least 1 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
+02-25 10:57:09.526  9838  9838 I tflite  : count=104 first=5540 curr=4024 min=3556 max=8934 avg=4709.21 std=947 p5=3678 median=4444 p95=6298
+02-25 10:57:09.527  9838  9838 I tflite  : Running benchmark for at least 50 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
+02-25 10:57:10.527  9838  9838 I tflite  : count=117 first=5060 curr=6038 min=3475 max=109917 avg=8273.59 std=13774 p5=3727 median=4875 p95=24384
+02-25 10:57:10.527  9838  9838 I tflite  : Inference timings in us: Init: 45692, First inference: 5540, Warmup (avg): 4709.21, Inference (avg): 8273.59
+02-25 10:57:10.527  9838  9838 I tflite  : Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
+02-25 10:57:10.527  9838  9838 I tflite  : Memory footprint delta from the start of the tool (MB): init=14.9062 overall=20.1094
+02-25 10:57:10.528  9838  9838 I tflite  : Profiling Info for Benchmark Initialization:
+02-25 10:57:10.528  9838  9838 I tflite  : ============================== Run Order ==============================
+02-25 10:57:10.528  9838  9838 I tflite  : 	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+02-25 10:57:10.528  9838  9838 I tflite  : 	                 ModifyGraphWithDelegate	   10.002	   10.002	 83.052%	 83.052%	  9332.000	        1	ModifyGraphWithDelegate/0
+02-25 10:57:10.528  9838  9838 I tflite  : 	                         AllocateTensors	    2.041	    2.041	 16.948%	100.000%	  2100.000	        1	AllocateTensors/0
+02-25 10:57:10.528  9838  9838 I tflite  : 
+02-25 10:57:10.528  9838  9838 I tflite  : ============================== Top by Computation Time ==============================
+02-25 10:57:10.528  9838  9838 I tflite  : 	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+02-25 10:57:10.528  9838  9838 I tflite  : 	                 ModifyGraphWithDelegate	   10.002	   10.002	 83.052%	 83.052%	  9332.000	        1	ModifyGraphWithDelegate/0
+02-25 10:57:10.528  9838  9838 I tflite  : 	                         AllocateTensors	    2.041	    2.041	 16.948%	100.000%	  2100.000	        1	AllocateTensors/0
+02-25 10:57:10.528  9838  9838 I tflite  : 
+02-25 10:57:10.528  9838  9838 I tflite  : Number of nodes executed: 2
+02-25 10:57:10.528  9838  9838 I tflite  : ============================== Summary by node type ====================
+02-25 10:57:10.528  9838  9838 I tflite  : Operator-wise Profiling Info for Regular Benchmark Runs:
+02-25 10:57:10.528  9838  9838 I tflite  : ============================== Run Order ==============================
+02-25 10:57:10.528  9838  9838 I tflite  : 	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+02-25 10:57:10.528  9838  9838 I tflite  : 	                 Binary Elementwise (ND)	    0.198	    0.180	  2.222%	  2.222%	     0.000	        1	Delegate/Binary Elementwise (ND):0
+02-25 10:57:10.528  9838  9838 I tflite  : 	                 Binary Elementwise (ND)	    0.051	    0.139	  1.723%	  3.945%	     0.000	        1	Delegate/Binary Elementwise (ND):1
+02-25 10:57:10.528  9838  9838 I tflite  : 	           Convolution (NHWC, F32) IGEMM	    0.449	    0.527	  6.525%	 10.469%	     0.000	        1	Delegate/Convolution (NHWC, F32) IGEMM:2
+02-25 10:57:10.528  9838  9838 I tflite  : 	                  Unary Elementwise (NC)	    0.077	    0.163	  2.018%	 12.487%	     0.000	        1	Delegate/Unary Elementwise (NC):3
+02-25 10:57:10.528  9838  9838 I tflite  : 	          Convolution (NHWC, F32) DWConv	    0.111	    0.172	  2.126%	 14.613%	     0.000	        1	Delegate/Convolution (NHWC, F32) DWConv:4
+02-25 10:57:10.528  9838  9838 I tflite  : 	                          Mean (ND) Mean	    0.014	    0.023	  0.283%	 14.896%	     0.00
+02-25 10:57:11.995 10024 10024 D nativeloader: Extending system_exposed_libraries: libmisys_jni.xiaomi.so:libteeservice_client.trustonic.so:libapuwareapusys.mtk.so:libapuwareapusys_v2.mtk.so:libapuwarexrp.mtk.so:libapuwarexrp_v2.mtk.so:libapuwareutils.mtk.so:libapuwareutils_v2.mtk.so:libapuwarehmp.mtk.so:libmcv_runtime_usdk.mtk.so:libneuron_graph_delegate.mtk.so:libneuronusdk_adapter.mtk.so:libtflite_mtk.mtk.so:libarmnn_ndk.mtk.so:libcmdl_ndk.mtk.so:libnir_neon_driver_ndk.mtk.so:libmvpu_runtime.mtk.so:libmvpu_runtime_pub.mtk.so:libmvpu_engine_pub.mtk.so:libmvpu_pattern_pub.mtk.so:libmvpuop_mtk_cv.mtk.so:libmvpuop_mtk_nn.mtk.so
