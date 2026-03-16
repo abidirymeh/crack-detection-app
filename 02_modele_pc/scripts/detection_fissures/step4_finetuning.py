@@ -9,17 +9,17 @@ print("ÉTAPE 4: FINE-TUNING DE MOBILENETV3-SMALL")
 print("=" * 60)
 
 # 1. CHARGER LES DONNÉES
-print("\n📥 Chargement des données...")
+print("\n Chargement des données...")
 data = np.load('sdnet_prepared.npz')
 X_train, X_test = data['X_train'], data['X_test']
 y_train, y_test = data['y_train'], data['y_test']
 
-print(f"✅ Données chargées:")
+print(f" Données chargées:")
 print(f"   - Train: {len(X_train)} images")
 print(f"   - Test: {len(X_test)} images")
 
 # 2. CRÉER LE MODÈLE
-print("\n🤖 Création du modèle...")
+print("\n Création du modèle...")
 
 # Modèle de base (gelé pour commencer)
 base_model = tf.keras.applications.MobileNetV3Small(
@@ -44,7 +44,7 @@ model.compile(
     metrics=['accuracy', tf.keras.metrics.Precision(), tf.keras.metrics.Recall()]
 )
 
-print(f"✅ Modèle créé: {model.count_params():,} paramètres")
+print(f" Modèle créé: {model.count_params():,} paramètres")
 
 # 3. CALLBACKS (pour sauvegarder le meilleur modèle)
 callbacks = [
@@ -105,7 +105,7 @@ history2 = model.fit(
 
 # 6. ÉVALUATION FINALE
 print("\n" + "=" * 60)
-print("📊 ÉVALUATION FINALE")
+print(" ÉVALUATION FINALE")
 print("=" * 60)
 
 # Prédictions
@@ -113,19 +113,19 @@ y_pred_proba = model.predict(X_test)
 y_pred = (y_pred_proba > 0.5).astype(int).flatten()
 
 # Métriques
-print("\n📌 Rapport de classification:")
+print("\n Rapport de classification:")
 print(classification_report(y_test, y_pred, target_names=['Sain', 'Fissure']))
 
-print("\n📌 Matrice de confusion:")
+print("\n Matrice de confusion:")
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
 
 # 7. SAUVEGARDER LE MODÈLE FINAL
 model.save('mobilenetv3_sdnet_final.h5')
-print("\n💾 Modèle final sauvegardé: mobilenetv3_sdnet_final.h5")
+print("\n Modèle final sauvegardé: mobilenetv3_sdnet_final.h5")
 
 # 8. VISUALISER L'ENTRAÎNEMENT
-print("\n📈 Génération des courbes d'entraînement...")
+print("\n Génération des courbes d'entraînement...")
 
 # Combiner les historiques
 acc = history1.history['accuracy'] + history2.history['accuracy']
@@ -157,7 +157,7 @@ plt.tight_layout()
 plt.savefig('courbes_entrainement.png')
 plt.show()
 
-print("\n✅ ENTRAÎNEMENT TERMINÉ!")
+print("\n ENTRAÎNEMENT TERMINÉ!")
 print("   - Meilleur modèle: meilleur_modele.h5")
 print("   - Modèle final: mobilenetv3_sdnet_final.h5")
 print("   - Courbes: courbes_entrainement.png")

@@ -22,7 +22,7 @@ outputs = tf.keras.layers.Dense(1, activation='sigmoid')(x)
 model = tf.keras.Model(inputs, outputs)
 
 # Utiliser les poids du modèle pré-entraîné
-print("✅ Modèle reconstruit")
+print(" Modèle reconstruit")
 
 # Convertir en TFLite
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
@@ -39,10 +39,10 @@ tflite_model = converter.convert()
 with open('mobilenetv3_fissures.tflite', 'wb') as f:
     f.write(tflite_model)
 
-print(f"\n✅ Modèle TFLite créé: mobilenetv3_fissures.tflite")
-print(f"📁 Taille: {len(tflite_model) / (1024*1024):.2f} Mo")
+print(f"\n Modèle TFLite créé: mobilenetv3_fissures.tflite")
+print(f" Taille: {len(tflite_model) / (1024*1024):.2f} Mo")
 
 # Tester rapidement
 interpreter = tf.lite.Interpreter(model_path='mobilenetv3_fissures.tflite')
 interpreter.allocate_tensors()
-print(f"✅ Test de chargement réussi")
+print(f" Test de chargement réussi")

@@ -1,8 +1,0 @@
-tensorflow==2.13.0 
-keras-flops 
-scikit-learn 
-matplotlib 
-numpy 
-pandas 
-pillow 
-opencv-python 

@@ -12,7 +12,7 @@ print("=" * 70)
 print("\n📥 Chargement du modèle...")
 model = tf.keras.models.load_model('modele_materiaux_final.h5')
 scaler = joblib.load('scaler_materiaux.pkl')
-print("✅ Modèle et scaler chargés")
+print(" Modèle et scaler chargés")
 
 # 2. TEST SUR QUELQUES EXEMPLES
 print("\n🔍 TEST SUR EXEMPLES SIMULÉS")
@@ -32,16 +32,16 @@ for i, ex in enumerate(exemples):
     # Prédire
     pred = model.predict(ex_scaled, verbose=0)[0][0]
     
-    print(f"\n📌 Cas {i+1}:")
+    print(f"\n Cas {i+1}:")
     print(f"   Age: {ex[0]} ans, Humidité: {ex[1]}%, Temp: {ex[2]}°C")
     print(f"   Usure: {ex[3]}/10, Fissures: {ex[4]}")
     print(f"   → Résistance estimée: {pred:.1f} MPa")
     
     if pred < 20:
-        print("   ⚠️  DANGER: Résistance très faible!")
+        print("     DANGER: Résistance très faible!")
     elif pred < 30:
-        print("   ⚠️  Attention: Résistance modérée")
+        print("     Attention: Résistance modérée")
     else:
-        print("   ✅ OK: Résistance bonne")
+        print("    OK: Résistance bonne")
 
-print("\n✅ ÉTAPE 7.4 TERMINÉE!")
+print("\n ÉTAPE 7.4 TERMINÉE!")

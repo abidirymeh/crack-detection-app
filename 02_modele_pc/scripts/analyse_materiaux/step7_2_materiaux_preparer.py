@@ -11,7 +11,7 @@ print("ÉTAPE 7.2: PRÉPARATION DES DONNÉES MATÉRIAUX")
 print("=" * 70)
 
 # 1. CRÉER OU CHARGER LES DONNÉES
-print("\n📊 Génération des données...")
+print("\n Génération des données...")
 
 np.random.seed(42)
 n_echantillons = 1000
@@ -38,21 +38,21 @@ data = {
 }
 
 df = pd.DataFrame(data)
-print(f"✅ Dataset créé: {len(df)} échantillons")
+print(f" Dataset créé: {len(df)} échantillons")
 
 # 2. SÉPARER FEATURES ET CIBLE
 X = df[['age_batiment', 'humidite', 'temperature', 'indice_usure', 'nb_fissures']]
 y = df['resistance']
 
-print(f"\n🎯 Features: {list(X.columns)}")
-print(f"🎯 Target: resistance (MPa)")
+print(f"\n Features: {list(X.columns)}")
+print(f" Target: resistance (MPa)")
 
 # 3. DIVISER TRAIN/TEST
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
-print(f"\n📊 Split:")
+print(f"\n Split:")
 print(f"   - Train: {len(X_train)} échantillons")
 print(f"   - Test: {len(X_test)} échantillons")
 
@@ -61,7 +61,7 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-print(f"\n📊 Statistiques après normalisation:")
+print(f"\n Statistiques après normalisation:")
 print(f"   - Moyenne train: {X_train_scaled.mean():.2f}")
 print(f"   - Écart-type train: {X_train_scaled.std():.2f}")
 
@@ -71,7 +71,7 @@ np.savez('materiaux_prepared.npz',
          y_train=y_train.values, y_test=y_test.values)
 
 joblib.dump(scaler, 'scaler_materiaux.pkl')
-print(f"\n💾 Données sauvegardées: materiaux_prepared.npz")
-print(f"💾 Scaler sauvegardé: scaler_materiaux.pkl")
+print(f"\n Données sauvegardées: materiaux_prepared.npz")
+print(f" Scaler sauvegardé: scaler_materiaux.pkl")
 
-print("\n✅ ÉTAPE 7.2 TERMINÉE!")
+print("\n ÉTAPE 7.2 TERMINÉE!")

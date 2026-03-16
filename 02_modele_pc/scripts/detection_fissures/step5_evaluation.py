@@ -10,7 +10,7 @@ print("=" * 70)
 # Charger les données
 data = np.load('sdnet_prepared.npz')
 X_test, y_test = data['X_test'], data['y_test']
-print(f"✅ {len(X_test)} images de test")
+print(f" {len(X_test)} images de test")
 
 # Charger TFLite
 interpreter = tf.lite.Interpreter(model_path='MobileNetV3-Small.tflite')
@@ -32,7 +32,7 @@ for i in range(len(X_test)):
 cm = confusion_matrix(y_test, y_pred)
 tn, fp, fn, tp = cm.ravel()
 
-print(f"\n📌 Matrice de confusion:")
+print(f"\n Matrice de confusion:")
 print(f"{'':15} {'Prédit SAIN':15} {'Prédit FISSURE':15}")
 print(f"{'Vrai SAIN':15} {tn:15} {fp:15}")
 print(f"{'Vrai FISSURE':15} {fn:15} {tp:15}")
@@ -42,7 +42,7 @@ precision = tp / (tp + fp) if (tp + fp) > 0 else 0
 recall = tp / (tp + fn) if (tp + fn) > 0 else 0
 f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
 
-print(f"\n📈 Métriques:")
+print(f"\n Métriques:")
 print(f"   - Accuracy: {accuracy:.4f}")
 print(f"   - Précision: {precision:.4f}")
 print(f"   - Rappel: {recall:.4f}")

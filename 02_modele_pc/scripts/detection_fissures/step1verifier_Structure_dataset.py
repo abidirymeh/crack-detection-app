@@ -6,22 +6,21 @@ print("=" * 60)
 print("ÉTAPE 1: EXPLORATION DE SDNET2018")
 print("=" * 60)
 
-# Ton chemin (à vérifier)
 chemin = "C:/Users/RIMEH/Desktop/PFA_ADEVA/03_dataset/sdnet"
 
 if not os.path.exists(chemin):
-    print(f"\n❌ Dossier introuvable: {chemin}")
-    print("📌 Vérifie le chemin exact de ton dossier SDNET2018")
+    print(f"\n Dossier introuvable: {chemin}")
+    print(" Vérifie le chemin exact de ton dossier SDNET2018")
     exit()
 
-print(f"\n✅ Dossier trouvé: {chemin}")
+print(f"\n Dossier trouvé: {chemin}")
 
 # Afficher la structure
-print("\n📋 STRUCTURE DU DATASET:")
+print("\n STRUCTURE DU DATASET:")
 for dossier in os.listdir(chemin):
     dossier_path = os.path.join(chemin, dossier)
     if os.path.isdir(dossier_path):
-        print(f"\n📁 {dossier}/")
+        print(f"\n {dossier}/")
 
         
         # Chercher les sous-dossiers (cracked, non-cracked)

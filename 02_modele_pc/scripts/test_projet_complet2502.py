@@ -7,19 +7,19 @@ import os
 from sklearn.metrics import mean_absolute_error, r2_score
 
 print("=" * 70)
-print("🔍 TEST FINAL DU PROJET COMPLET")
+print(" TEST FINAL DU PROJET COMPLET")
 print("=" * 70)
 
 # ============================================
 # PARTIE 1: TEST DU MODÈLE DE FISSURES
 # ============================================
 print("\n" + "=" * 50)
-print("📸 PARTIE 1: DÉTECTION DE FISSURES")
+print(" PARTIE 1: DÉTECTION DE FISSURES")
 print("=" * 50)
 
 # Vérifier que le modèle TFLite existe
 if os.path.exists('mobilenetv3_fissures.tflite'):
-    print("✅ Modèle TFLite trouvé")
+    print(" Modèle TFLite trouvé")
     
     # Charger le modèle
     interpreter = tf.lite.Interpreter(model_path='mobilenetv3_fissures.tflite')
@@ -32,7 +32,7 @@ if os.path.exists('mobilenetv3_fissures.tflite'):
     print(f"   Format sortie: {output_details[0]['shape']}")
     
     # Tester avec une image si elle existe
-    image_test = input("📂 Entrez le chemin d'une image de test (ou 'skip'): ")
+    image_test = input(" Entrez le chemin d'une image de test (ou 'skip'): ")
     
     if image_test != 'skip' and os.path.exists(image_test):
         img = cv2.imread(image_test)
@@ -45,32 +45,32 @@ if os.path.exists('mobilenetv3_fissures.tflite'):
         interpreter.invoke()
         proba = interpreter.get_tensor(output_details[0]['index'])[0][0]
         
-        print(f"\n📊 RÉSULTAT:")
+        print(f"\n RÉSULTAT:")
         print(f"   Probabilité fissure: {proba:.2%}")
-        print(f"   → {'🚨 FISSURE DÉTECTÉE' if proba > 0.5 else '✅ PAS DE FISSURE'}")
+        print(f"   → {' FISSURE DÉTECTÉE' if proba > 0.5 else ' PAS DE FISSURE'}")
     else:
         print("⏩ Test d'image ignoré")
 else:
-    print("❌ Modèle TFLite manquant!")
+    print(" Modèle TFLite manquant!")
 
 # ============================================
 # PARTIE 2: TEST DU MODÈLE MATÉRIAUX
 # ============================================
 print("\n" + "=" * 50)
-print("🧪 PARTIE 2: ANALYSE DES MATÉRIAUX")
+print(" PARTIE 2: ANALYSE DES MATÉRIAUX")
 print("=" * 50)
 
 # Vérifier les fichiers
 if os.path.exists('modele_concrete_final.h5') and os.path.exists('scaler_concrete.pkl'):
-    print("✅ Modèle matériaux trouvé")
-    print("✅ Scaler trouvé")
+    print(" Modèle matériaux trouvé")
+    print(" Scaler trouvé")
     
     # Charger le modèle et le scaler
     model_materiaux = tf.keras.models.load_model('modele_concrete_final.h5')
     scaler = joblib.load('scaler_concrete.pkl')
     
     # Données de test
-    print("\n📊 Test sur 4 cas typiques:")
+    print("\n Test sur 4 cas typiques:")
     
     # PAR CELLES-CI (avec les 8 features) :
     cas_test = [
@@ -88,14 +88,14 @@ if os.path.exists('modele_concrete_final.h5') and os.path.exists('scaler_concret
         print(f"      → Résistance estimée: {pred:.1f} MPa")
         
         if pred < 20:
-            print("      ⚠️  DANGER: Résistance très faible!")
+            print("        DANGER: Résistance très faible!")
         elif pred < 30:
-            print("      ⚠️  Attention: Résistance modérée")
+            print("        Attention: Résistance modérée")
         else:
-            print("      ✅ OK: Résistance bonne")
+            print("       OK: Résistance bonne")
     
     # Vérifier les métriques
-    print("\n📈 Métriques du modèle:")
+    print("\n Métriques du modèle:")
     try:
         # Charger les données de test
         data = np.load('concrete_prepared.npz')
@@ -109,48 +109,48 @@ if os.path.exists('modele_concrete_final.h5') and os.path.exists('scaler_concret
         print(f"   - R²: {r2:.4f}")
         
         if r2 > 0.85:
-            print("   ✅ Excellent modèle!")
+            print("    Excellent modèle!")
         elif r2 > 0.7:
-            print("   ⚠️ Bon modèle")
+            print("    Bon modèle")
         else:
-            print("   ❌ Modèle à améliorer")
+            print("    Modèle à améliorer")
     except:
-        print("   ⚠️ Données de test non trouvées")
+        print("    Données de test non trouvées")
 else:
-    print("❌ Fichiers matériaux manquants!")
+    print(" Fichiers matériaux manquants!")
 
 # ============================================
 # BILAN FINAL
 # ============================================
 print("\n" + "=" * 50)
-print("📋 BILAN FINAL")
+print(" BILAN FINAL")
 print("=" * 50)
 
 nb_tests_reussis = 0
 nb_tests_total = 5
 
-print("\n✅ Tests automatiques:")
+print("\n Tests automatiques:")
 print(f"   - Modèle fissures présent: {'✅' if os.path.exists('mobilenetv3_fissures.tflite') else '❌'}")
 print(f"   - Modèle matériaux présent: {'✅' if os.path.exists('modele_concrete_final.h5') else '❌'}")
 print(f"   - Scaler présent: {'✅' if os.path.exists('scaler_concrete.pkl') else '❌'}")
 print(f"   - Données préparées: {'✅' if os.path.exists('concrete_prepared.npz') else '❌'}")
 print(f"   - Scripts step: {'✅' if os.path.exists('step7_5_integration.py') else '❌'}")
 
-print("\n🎯 CONCLUSION:")
+print("\n CONCLUSION:")
 if all([
     os.path.exists('mobilenetv3_fissures.tflite'),
     os.path.exists('modele_concrete_final.h5'),
     os.path.exists('scaler_concrete.pkl'),
     os.path.exists('concrete_prepared.npz')
 ]):
-    print("   ✅ TON PROJET EST COMPLET !")
+    print("    TON PROJET EST COMPLET !")
     print("   Tu as les deux modèles fonctionnels.")
-    print("\n📝 Prochaines étapes:")
+    print("\n Prochaines étapes:")
     print("   1. Tester avec des images réelles")
     print("   2. Rassembler les résultats pour le rapport")
     print("   3. Préparer la soutenance")
 else:
-    print("   ⚠️ Il manque certains fichiers.")
+    print("    Il manque certains fichiers.")
     print("   Vérifie la checklist ci-dessus.")
 
 print("\n" + "=" * 70)

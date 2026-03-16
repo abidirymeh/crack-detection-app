@@ -15,10 +15,10 @@ data = np.load('materiaux_prepared.npz')
 X_train, X_test = data['X_train'], data['X_test']
 y_train, y_test = data['y_train'], data['y_test']
 
-print(f"✅ Données chargées: {len(X_train)} train, {len(X_test)} test")
+print(f" Données chargées: {len(X_train)} train, {len(X_test)} test")
 
-# 2. CRÉER LE MODÈLE
-print("\n🤖 Création du modèle de régression...")
+# 2. CReation du MODÈLE
+print("\n Création du modèle de régression...")
 
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
@@ -60,7 +60,7 @@ callbacks = [
 ]
 
 # 4. ENTRAÎNEMENT
-print("\n⏳ Entraînement en cours...")
+print("\n Entraînement en cours...")
 
 history = model.fit(
     X_train, y_train,
@@ -72,7 +72,7 @@ history = model.fit(
 )
 
 # 5. ÉVALUATION
-print("\n📊 ÉVALUATION FINALE")
+print("\n ÉVALUATION FINALE")
 print("=" * 50)
 
 y_pred = model.predict(X_test).flatten()
@@ -82,7 +82,7 @@ mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
 
-print(f"\n📈 Métriques:")
+print(f"\n Métriques:")
 print(f"   - MAE (Mean Absolute Error): {mae:.2f} MPa")
 print(f"   - MSE (Mean Squared Error): {mse:.2f}")
 print(f"   - RMSE (Root Mean Squared Error): {rmse:.2f} MPa")
@@ -121,10 +121,10 @@ plt.grid(True)
 
 plt.tight_layout()
 plt.savefig('resultats_materiaux.png')
-print(f"\n✅ Graphiques sauvegardés: resultats_materiaux.png")
+print(f"\n Graphiques sauvegardés: resultats_materiaux.png")
 
 # 7. SAUVEGARDER
 model.save('modele_materiaux_final.h5')
-print(f"\n💾 Modèle final sauvegardé: modele_materiaux_final.h5")
+print(f"\n Modèle final sauvegardé: modele_materiaux_final.h5")
 
-print("\n✅ ÉTAPE 7.3 TERMINÉE!")
+print("\n ÉTAPE 7.3 TERMINÉE!")

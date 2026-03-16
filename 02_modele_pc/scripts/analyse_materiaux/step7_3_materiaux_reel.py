@@ -14,10 +14,10 @@ data = np.load('concrete_prepared.npz')
 X_train, X_test = data['X_train'], data['X_test']
 y_train, y_test = data['y_train'], data['y_test']
 
-print(f"✅ Données chargées: {len(X_train)} train, {len(X_test)} test")
+print(f" Données chargées: {len(X_train)} train, {len(X_test)} test")
 
 # 2. CRÉER LE MODÈLE
-print("\n🤖 Création du modèle...")
+print("\n Création du modèle...")
 
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
@@ -71,7 +71,7 @@ history = model.fit(
 )
 
 # 5. ÉVALUATION
-print("\n📊 ÉVALUATION FINALE")
+print("\n ÉVALUATION FINALE")
 print("=" * 50)
 
 y_pred = model.predict(X_test).flatten()
@@ -81,7 +81,7 @@ mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
 
-print(f"\n📈 Métriques:")
+print(f"\n Métriques:")
 print(f"   - MAE: {mae:.2f} MPa")
 print(f"   - RMSE: {rmse:.2f} MPa")
 print(f"   - R² Score: {r2:.4f}")
@@ -114,10 +114,10 @@ plt.title(f'Prédictions vs Réalité\nR² = {r2:.3f}')
 
 plt.tight_layout()
 plt.savefig('resultats_concrete.png')
-print(f"\n✅ Graphiques: resultats_concrete.png")
+print(f"\n Graphiques: resultats_concrete.png")
 
 # 7. SAUVEGARDER
 model.save('modele_concrete_final.h5')
-print(f"\n💾 Modèle final: modele_concrete_final.h5")
+print(f"\n Modèle final: modele_concrete_final.h5")
 
-print("\n✅ ENTRAÎNEMENT TERMINÉ!")
+print("\n ENTRAÎNEMENT TERMINÉ!")

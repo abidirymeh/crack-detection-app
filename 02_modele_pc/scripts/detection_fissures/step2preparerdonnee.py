@@ -25,7 +25,7 @@ def charger_images(chemin_base, max_par_classe=500):
     total_images = 0
     
     for cat in categories:
-        print(f"\n📁 {cat}:")
+        print(f"\n {cat}:")
         
         # Images avec fissures (Cracked)
         path_cracked = os.path.join(chemin_base, cat, nom_cracked, '*.jpg')
@@ -57,14 +57,14 @@ def charger_images(chemin_base, max_par_classe=500):
                 labels.append(0)
                 total_images += 1
     
-    print(f"\n📊 Total images chargées: {total_images}")
+    print(f"\n Total images chargées: {total_images}")
     return np.array(images), np.array(labels)
 
 # Charger les images
-print("\n📥 Chargement en cours...")
+print("\n Chargement en cours...")
 X, y = charger_images(chemin, max_par_classe=500)
 
-print(f"\n✅ Résultat final:")
+print(f"\n Résultat final:")
 print(f"   - Total: {len(X)} images")
 print(f"   - Avec fissures: {np.sum(y)} ({np.sum(y)/len(y)*100:.1f}%)")
 print(f"   - Sans fissures: {len(y)-np.sum(y)} ({(len(y)-np.sum(y))/len(y)*100:.1f}%)")
@@ -74,7 +74,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
 
-print(f"\n📊 Split:")
+print(f"\n Split:")
 print(f"   - Train: {len(X_train)} images")
 print(f"   - Test: {len(X_test)} images")
 
@@ -87,5 +87,5 @@ np.savez('sdnet_prepared.npz',
          X_train=X_train, X_test=X_test,
          y_train=y_train, y_test=y_test)
 
-print("\n💾 Données sauvegardées dans 'sdnet_prepared.npz'")
-print("\n✅ ÉTAPE 2 TERMINÉE! Prêt pour l'ÉTAPE 3")
+print("\n Données sauvegardées dans 'sdnet_prepared.npz'")
+print("\n ÉTAPE 2 TERMINÉE! Prêt pour l'ÉTAPE 3")
