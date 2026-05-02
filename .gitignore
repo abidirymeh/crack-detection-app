@@ -1,0 +1,29 @@
+echo "# Fichiers volumineux à exclure
+venv/
+__pycache__/
+*.pyc
+*.tflite
+*.h5
+*.npz
+*.pkl
+*.png
+*.jpg
+*.jpeg
+*.xls
+*.xlsx
+*.log
+.DS_Store
+
+# Environnements virtuels
+env/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Backups
+*.bak
+*.tmp" > .gitignore
