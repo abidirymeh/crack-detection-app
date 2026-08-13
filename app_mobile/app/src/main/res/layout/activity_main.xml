@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Caméra -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Bouton CAPTURER (toujours visible en bas) -->
+    <Button
+        android:id="@+id/captureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capturer"
+        android:backgroundTint="#FF5722"
+        android:layout_margin="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Panneau de résultats (apparaît après capture) -->
+    <ScrollView
+        android:id="@+id/resultPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="#CC000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Image capturée -->
+            <ImageView
+                android:id="@+id/capturedImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:background="#FFFFFF"
+                android:padding="2dp"/>
+
+            <!-- Résultat fissure -->
+            <TextView
+                android:id="@+id/resultText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:padding="12dp"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#FFFFFF"
+                android:layout_marginVertical="8dp"/>
+
+            <!-- Titre analyse matériaux -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ANALYSE MATERIAUX"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <!-- Champs matériaux -->
+            <EditText
+                android:id="@+id/ageBatiment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Age du batiment (annees)"
+                android:inputType="number"
+                android:background="@android:color/white"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:id="@+id/humidite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Humidite (%)"
+                android:inputType="numberDecimal"
+                android:background="@android:color/white"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:id="@+id/temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Temperature (°C)"
+                android:inputType="numberDecimal"
+                android:background="@android:color/white"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:id="@+id/usure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Indice d'usure (0-10)"
+                android:inputType="numberDecimal"
+                android:background="@android:color/white"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:id="@+id/nbFissures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de fissures"
+                android:inputType="number"
+                android:background="@android:color/white"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"/>
+
+            <Button
+                android:id="@+id/analyserMateriaux"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Analyser materiaux"
+                android:backgroundTint="#2196F3"
+                android:layout_marginTop="12dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/resultatMateriaux"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@android:color/white"
+                android:padding="12dp"
+                android:layout_marginTop="8dp"
+                android:background="#33000000"/>
+
+            <!-- Bouton NOUVELLE PHOTO (dans le panneau) -->
+            <Button
+                android:id="@+id/newPhotoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nouvelle photo"
+                android:backgroundTint="#4CAF50"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

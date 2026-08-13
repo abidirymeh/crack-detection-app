@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Fichiers … ignorer 
 venv/ 
 __pycache__/ 
@@ -8,3 +9,34 @@ __pycache__/
 *.pkl 
 03_dataset/ 
 resultats_bruts.txt 
+=======
+echo "# Fichiers volumineux Ã  exclure
+venv/
+__pycache__/
+*.pyc
+*.tflite
+*.h5
+*.npz
+*.pkl
+*.png
+*.jpg
+*.jpeg
+*.xls
+*.xlsx
+*.log
+.DS_Store
+
+# Environnements virtuels
+env/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Backups
+*.bak
+*.tmp" > .gitignore
+>>>>>>> fee2a3765f4ae5fe9af2e87e42b56a4308ea934f
