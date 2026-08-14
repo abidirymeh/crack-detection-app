@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <!-- Coin haut-gauche -->
+    <path android:strokeColor="#5BB8D4" android:strokeWidth="4" android:fillColor="#00000000"
+        android:pathData="M20,60 L20,20 L60,20"/>
+    <!-- Coin haut-droit -->
+    <path android:strokeColor="#5BB8D4" android:strokeWidth="4" android:fillColor="#00000000"
+        android:pathData="M140,20 L180,20 L180,60"/>
+    <!-- Coin bas-gauche -->
+    <path android:strokeColor="#5BB8D4" android:strokeWidth="4" android:fillColor="#00000000"
+        android:pathData="M20,140 L20,180 L60,180"/>
+    <!-- Coin bas-droit -->
+    <path android:strokeColor="#5BB8D4" android:strokeWidth="4" android:fillColor="#00000000"
+        android:pathData="M140,180 L180,180 L180,140"/>
+    <!-- Croix centrale -->
+    <path android:strokeColor="#5BB8D4" android:strokeWidth="2" android:fillColor="#00000000"
+        android:pathData="M100,90 L100,110 M90,100 L110,100"/>
+</vector>

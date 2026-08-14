@@ -1,164 +1,703 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F0F4FA">
 
-    <!-- Caméra -->
-    <androidx.camera.view.PreviewView
-        android:id="@+id/previewView"
+    <!-- ══════════════════════════════════════════
+         ÉCRAN 1 : MODE CAMÉRA (plein écran)
+    ══════════════════════════════════════════ -->
+    <FrameLayout
+        android:id="@+id/cameraScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:visibility="visible">
 
-    <!-- Bouton CAPTURER (toujours visible en bas) -->
-    <Button
-        android:id="@+id/captureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Capturer"
-        android:backgroundTint="#FF5722"
-        android:layout_margin="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <!-- Caméra -->
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <!-- Panneau de résultats (apparaît après capture) -->
-    <ScrollView
-        android:id="@+id/resultPanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:background="#CC000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        <!-- Header flottant -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/gradient_top"
+            android:paddingTop="44dp"
+            android:paddingBottom="18dp"
+            android:paddingHorizontal="20dp"
+            android:layout_gravity="top">
 
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_scan"
+                android:tint="#FFFFFF"
+                android:contentDescription="Logo StructoScan"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="StructoScan"
+                    android:textColor="#FFFFFF"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-condensed"
+                    android:letterSpacing="0.08"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inspection structurelle IA"
+                    android:textColor="#8BBFD8"
+                    android:textSize="11sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:background="@drawable/badge_ai"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"/>
+        </LinearLayout>
+
+        <!-- Viseur central (guide) -->
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="120dp"
+            android:src="@drawable/ic_viewfinder"
+            android:alpha="0.55"
+            android:contentDescription="Viseur"/>
+
+        <!-- Zone bas : distance + bouton - NE CACHE RIEN en mode caméra -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:background="@drawable/gradient_bottom"
+            android:paddingTop="16dp"
+            android:paddingBottom="28dp"
+            android:paddingHorizontal="24dp"
+            android:layout_gravity="bottom">
 
-            <!-- Image capturée -->
-            <ImageView
-                android:id="@+id/capturedImage"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                android:background="#FFFFFF"
-                android:padding="2dp"/>
-
-            <!-- Résultat fissure -->
+            <!-- Label distance -->
             <TextView
-                android:id="@+id/resultText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"
-                android:padding="12dp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#FFFFFF"
-                android:layout_marginVertical="8dp"/>
-
-            <!-- Titre analyse matériaux -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ANALYSE MATERIAUX"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:gravity="center"/>
-
-            <!-- Champs matériaux -->
-            <EditText
-                android:id="@+id/ageBatiment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Age du batiment (annees)"
-                android:inputType="number"
-                android:background="@android:color/white"
-                android:padding="10dp"
-                android:layout_marginTop="8dp"/>
-
-            <EditText
-                android:id="@+id/humidite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Humidite (%)"
-                android:inputType="numberDecimal"
-                android:background="@android:color/white"
-                android:padding="10dp"
-                android:layout_marginTop="8dp"/>
-
-            <EditText
-                android:id="@+id/temperature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Temperature (°C)"
-                android:inputType="numberDecimal"
-                android:background="@android:color/white"
-                android:padding="10dp"
-                android:layout_marginTop="8dp"/>
-
-            <EditText
-                android:id="@+id/usure"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Indice d'usure (0-10)"
-                android:inputType="numberDecimal"
-                android:background="@android:color/white"
-                android:padding="10dp"
-                android:layout_marginTop="8dp"/>
-
-            <EditText
-                android:id="@+id/nbFissures"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nombre de fissures"
-                android:inputType="number"
-                android:background="@android:color/white"
-                android:padding="10dp"
-                android:layout_marginTop="8dp"/>
-
-            <Button
-                android:id="@+id/analyserMateriaux"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Analyser materiaux"
-                android:backgroundTint="#2196F3"
-                android:layout_marginTop="12dp"
-                android:layout_gravity="center"/>
+                android:text="DISTANCE AU MUR"
+                android:textColor="#7AAFC8"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.18"
+                android:layout_marginBottom="6dp"/>
 
-            <TextView
-                android:id="@+id/resultatMateriaux"
+            <!-- Champ distance -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textColor="@android:color/white"
-                android:padding="12dp"
-                android:layout_marginTop="8dp"
-                android:background="#33000000"/>
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/input_camera"
+                android:paddingHorizontal="14dp"
+                android:layout_marginBottom="16dp">
 
-            <!-- Bouton NOUVELLE PHOTO (dans le panneau) -->
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_ruler"
+                    android:tint="#5BB8D4"
+                    android:contentDescription="Distance"/>
+
+                <EditText
+                    android:id="@+id/distance"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Ex : 1.5"
+                    android:inputType="numberDecimal"
+                    android:background="@null"
+                    android:paddingHorizontal="10dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#5A7D94"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="m"
+                    android:textColor="#5BB8D4"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Bouton Analyser -->
+            <Button
+                android:id="@+id/captureButton"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="ANALYSER"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.14"
+                android:drawableStart="@drawable/ic_camera"
+                android:drawablePadding="10dp"
+                android:background="@drawable/btn_capture"
+                android:stateListAnimator="@null"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- ══════════════════════════════════════════
+         ÉCRAN 2 : MODE RÉSULTATS
+    ══════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/resultScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="#EEF2F8">
+
+        <!-- Header résultats -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/header_gradient"
+            android:paddingTop="44dp"
+            android:paddingBottom="14dp"
+            android:paddingHorizontal="16dp">
+
             <Button
                 android:id="@+id/newPhotoButton"
                 android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="Retour"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_back"
+                android:drawablePadding="4dp"
+                android:background="@drawable/btn_back"
+                android:stateListAnimator="@null"
+                android:paddingHorizontal="12dp"/>
+
+            <TextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Nouvelle photo"
-                android:backgroundTint="#4CAF50"
-                android:layout_marginTop="16dp"
-                android:layout_gravity="center"/>
+                android:layout_weight="1"
+                android:text="Rapport d'inspection"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:fontFamily="sans-serif-condensed"
+                android:letterSpacing="0.05"/>
 
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_scan"
+                android:tint="#7AAFC8"
+                android:contentDescription="Logo"/>
         </LinearLayout>
-    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- ScrollView résultats -->
+        <ScrollView
+            android:id="@+id/resultPanel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="30dp">
+
+                <!-- ─── CARTE : Photo + Fissure ─── -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Bandeau titre bleu -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/card_header_blue"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="9dp">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_crack"
+                                android:tint="#FFFFFF"
+                                android:contentDescription="Fissure"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DÉTECTION DE FISSURES"
+                                android:textColor="#FFFFFF"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.14"
+                                android:layout_marginStart="7dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="14dp"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/capturedImage"
+                                android:layout_width="84dp"
+                                android:layout_height="84dp"
+                                android:scaleType="centerCrop"
+                                android:background="@drawable/image_border"
+                                android:contentDescription="Photo capturée"/>
+
+                            <TextView
+                                android:id="@+id/resultText"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:textSize="13sp"
+                                android:textColor="#1C2E45"
+                                android:lineSpacingMultiplier="1.5"
+                                android:textStyle="bold"
+                                android:text="Analyse en cours..."/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ─── CARTE : LLM ─── -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#0D1B2E"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="8dp">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_ai"
+                                android:tint="#5BB8D4"
+                                android:contentDescription="IA"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="ANALYSE IA — GROQ"
+                                android:textColor="#5BB8D4"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.14"
+                                android:layout_marginStart="7dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LLM"
+                                android:textColor="#5BB8D4"
+                                android:textSize="9sp"
+                                android:textStyle="bold"
+                                android:background="@drawable/badge_llm"
+                                android:paddingHorizontal="7dp"
+                                android:paddingVertical="3dp"/>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#1A3550"
+                            android:layout_marginBottom="9dp"/>
+
+                        <TextView
+                            android:id="@+id/resultLLM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="#AECCE6"
+                            android:lineSpacingMultiplier="1.6"
+                            android:text="Analyse LLM en attente..."/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ─── CARTE : Résistance matériaux ─── -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/card_header_teal"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="9dp">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_material"
+                                android:tint="#FFFFFF"
+                                android:contentDescription="Matériaux"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="RÉSISTANCE DES MATÉRIAUX"
+                                android:textColor="#FFFFFF"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.14"
+                                android:layout_marginStart="7dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <!-- Champ : âge bâtiment -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/input_field"
+                                android:paddingHorizontal="12dp"
+                                android:layout_marginBottom="8dp">
+
+                                <ImageView
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:src="@drawable/ic_building"
+                                    android:tint="#5BB8D4"
+                                    android:contentDescription="Bâtiment"/>
+
+                                <EditText
+                                    android:id="@+id/ageBatiment"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:hint="Âge du bâtiment (années)"
+                                    android:inputType="number"
+                                    android:background="@null"
+                                    android:paddingHorizontal="10dp"
+                                    android:textColor="#1C2E45"
+                                    android:textColorHint="#9AAFC4"
+                                    android:textSize="13sp"
+                                    android:autofillHints=""/>
+                            </LinearLayout>
+
+                            <!-- Champ : humidité -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/input_field"
+                                android:paddingHorizontal="12dp"
+                                android:layout_marginBottom="8dp">
+
+                                <ImageView
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:src="@drawable/ic_humidity"
+                                    android:tint="#5BB8D4"
+                                    android:contentDescription="Humidité"/>
+
+                                <EditText
+                                    android:id="@+id/humidite"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:hint="Humidité (%)"
+                                    android:inputType="numberDecimal"
+                                    android:background="@null"
+                                    android:paddingHorizontal="10dp"
+                                    android:textColor="#1C2E45"
+                                    android:textColorHint="#9AAFC4"
+                                    android:textSize="13sp"
+                                    android:autofillHints=""/>
+                            </LinearLayout>
+
+                            <!-- Champ : température -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/input_field"
+                                android:paddingHorizontal="12dp"
+                                android:layout_marginBottom="8dp">
+
+                                <ImageView
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:src="@drawable/ic_temp"
+                                    android:tint="#5BB8D4"
+                                    android:contentDescription="Température"/>
+
+                                <EditText
+                                    android:id="@+id/temperature"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:hint="Température (°C)"
+                                    android:inputType="numberDecimal"
+                                    android:background="@null"
+                                    android:paddingHorizontal="10dp"
+                                    android:textColor="#1C2E45"
+                                    android:textColorHint="#9AAFC4"
+                                    android:textSize="13sp"
+                                    android:autofillHints=""/>
+                            </LinearLayout>
+
+                            <!-- Champ : usure -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/input_field"
+                                android:paddingHorizontal="12dp"
+                                android:layout_marginBottom="8dp">
+
+                                <ImageView
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:src="@drawable/ic_wear"
+                                    android:tint="#5BB8D4"
+                                    android:contentDescription="Usure"/>
+
+                                <EditText
+                                    android:id="@+id/usure"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:hint="Indice d'usure (0–10)"
+                                    android:inputType="numberDecimal"
+                                    android:background="@null"
+                                    android:paddingHorizontal="10dp"
+                                    android:textColor="#1C2E45"
+                                    android:textColorHint="#9AAFC4"
+                                    android:textSize="13sp"
+                                    android:autofillHints=""/>
+                            </LinearLayout>
+
+                            <!-- Champ : nb fissures -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/input_field"
+                                android:paddingHorizontal="12dp"
+                                android:layout_marginBottom="12dp">
+
+                                <ImageView
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:src="@drawable/ic_crack_count"
+                                    android:tint="#5BB8D4"
+                                    android:contentDescription="Nombre fissures"/>
+
+                                <EditText
+                                    android:id="@+id/nbFissures"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:hint="Nombre de fissures observées"
+                                    android:inputType="number"
+                                    android:background="@null"
+                                    android:paddingHorizontal="10dp"
+                                    android:textColor="#1C2E45"
+                                    android:textColorHint="#9AAFC4"
+                                    android:textSize="13sp"
+                                    android:autofillHints=""/>
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/analyserMateriaux"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:text="CALCULER LA RÉSISTANCE"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.08"
+                                android:drawableStart="@drawable/ic_material"
+                                android:drawablePadding="8dp"
+                                android:background="@drawable/btn_teal"
+                                android:stateListAnimator="@null"/>
+
+                            <TextView
+                                android:id="@+id/resultatMateriaux"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="13sp"
+                                android:textColor="#1C2E45"
+                                android:lineSpacingMultiplier="1.5"
+                                android:padding="13dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/result_box_teal"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ─── CARTE : Diagnostic peinture ─── -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    android:layout_marginBottom="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/card_header_purple"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="9dp">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_paint"
+                                android:tint="#FFFFFF"
+                                android:contentDescription="Peinture"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DIAGNOSTIC PEINTURE"
+                                android:textColor="#FFFFFF"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.14"
+                                android:layout_marginStart="7dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <Button
+                                android:id="@+id/analyserPeintureButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:text="ANALYSER LA PEINTURE"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.08"
+                                android:drawableStart="@drawable/ic_paint"
+                                android:drawablePadding="8dp"
+                                android:background="@drawable/btn_purple"
+                                android:stateListAnimator="@null"/>
+
+                            <LinearLayout
+                                android:id="@+id/peinturePanel"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone"
+                                android:layout_marginTop="10dp">
+
+                                <TextView
+                                    android:id="@+id/resultatPeinture"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="13sp"
+                                    android:textColor="#1C2E45"
+                                    android:lineSpacingMultiplier="1.5"
+                                    android:padding="13dp"
+                                    android:background="@drawable/result_box_purple"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
