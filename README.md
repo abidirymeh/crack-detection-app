@@ -7,10 +7,15 @@ Ce projet vise à faciliter le diagnostic de l'état d'un bâtiment (façades, m
 ## Démonstration
 
 https://github.com/user-attachments/assets/0e760895-a8b4-46db-8153-72c51cff1c92
+
 https://github.com/user-attachments/assets/faf0218d-afd5-4a6b-8c94-fd0988d1d70f
+
 https://github.com/user-attachments/assets/3c3398fc-217d-461e-bd21-2cb2fe2957eb
+
 https://github.com/user-attachments/assets/c7137b42-7a23-42f9-beb2-167002d84e0e
+
 https://github.com/user-attachments/assets/1765306c-17e6-4762-b6f0-d0f9b21aa065
+
 
 ## Table des matières
 
