@@ -178,11 +178,6 @@ _Aucune intégration continue n'est actuellement configurée dans le dépôt fou
 - [Documentation Groq API](https://console.groq.com/docs)
 - [Documentation Hedera](https://docs.hedera.com/hedera)
 
-## Gestion des versions
-
-Afin de maintenir un cycle de publication claire et de favoriser la rétrocompatibilité, la dénomination des versions suit la spécification décrite par la [Gestion sémantique de version](https://semver.org/lang/fr/)
-
-Les versions disponibles ainsi que les journaux décrivant les changements apportés sont disponibles depuis [la page des Releases][mettre le lien ici].
 
 ## Licence
 
@@ -190,4 +185,5 @@ Voir le fichier [LICENSE](./LICENSE.md) du dépôt.
 
 ## Auteur
 
-- **RIMEH** — [GitHub](https://github.com/) *(lien de profil à compléter)*
+**Rimeh Abidi**
+Contact : rimeh.abidi@enis.tn
