@@ -2,7 +2,15 @@
 
 ## À propos
 
-Ce projet vise à faciliter le diagnostic de l'état d'un bâtiment (façades, murs) directement depuis un smartphone. À partir d'une simple photo et de quelques informations sur les conditions du bâtiment, l'application détecte automatiquement la présence de **fissures**, évalue l'**état de la peinture** et estime la **résistance du matériau** (béton), grâce à des modèles de Deep Learning embarqués (TensorFlow Lite). Le diagnostic peut être affiné par une analyse complémentaire via un **LLM (Groq)** et archivé de façon infalsifiable sur la **blockchain Hedera**, dans un objectif de traçabilité pour la maintenance du bâti.
+Ce projet vise à faciliter le diagnostic de l'état d'un bâtiment (façades, murs) directement depuis un smartphone. À partir d'une simple photo et de quelques informations sur les conditions du bâtiment, l'application détecte automatiquement la présence de **fissures**, évalue l'**état de la peinture** et estime la **résistance du matériau** (béton), grâce à des modèles de Deep Learning embarqués (TensorFlow Lite). Le diagnostic peut être affiné par une analyse complémentaire via un **LLM (Groq)** et archivé de façon infalsifiable sur la **blockchain Hedera**, dans un objectif de traçabilité pour la maintenance du bâtiment .
+
+## Démonstration
+
+https://github.com/user-attachments/assets/0e760895-a8b4-46db-8153-72c51cff1c92
+https://github.com/user-attachments/assets/faf0218d-afd5-4a6b-8c94-fd0988d1d70f
+https://github.com/user-attachments/assets/3c3398fc-217d-461e-bd21-2cb2fe2957eb
+https://github.com/user-attachments/assets/c7137b42-7a23-42f9-beb2-167002d84e0e
+https://github.com/user-attachments/assets/1765306c-17e6-4762-b6f0-d0f9b21aa065
 
 ## Table des matières
 
@@ -47,8 +55,8 @@ Le projet est composé de deux parties (`ia/` et `app_mobile/`), chacune avec se
 **1. Cloner le dépôt**
 
 ```bash
-git clone <url-du-depot>
-cd PFA_ADEVA
+git clone https://github.com/abidirymeh/crack-detection-app.git
+cd crack-detection-app
 ```
 
 **2. Installer l'environnement Python (`ia/`)**
